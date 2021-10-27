@@ -22,45 +22,43 @@ namespace _20210824_Queue
             int data8 = 99;
             int data9 = 100;
             int data10 = 111;
-
+            int data11 = 122;
+            int data12 = 133;
+            int data13 = 144;
+            int data14 = 155;
+            int data15 = 166;
+            int data16 = 177;
+            int data17 = 188;
+            int data18 = 199;
 
             queue.Put(data1);
             queue.Put(data2);
             queue.Put(data3);
             queue.Put(data4);
             queue.Put(data5);
-            var data22 = queue.GetData();
-            var data33 = queue.GetData();
-            var data44 = queue.GetData();
-            foreach (object item in queue)
-            {
-                Console.WriteLine("{0}", item);
-            }
-            Console.WriteLine();
             queue.Put(data6);
             queue.Put(data7);
-            foreach (object item in queue)
-            {
-                Console.WriteLine("{0}", item);
-            }
             queue.Put(data8);
-
-            foreach (object item in queue)
-            {
-                Console.WriteLine("{0}", item);
-            }
-
-            Console.WriteLine();
             queue.Put(data9);
             queue.Put(data10);
-            var data55 = queue.GetData();
-            var data66 = queue.GetData();
-            var data77 = queue.GetData();
+            queue.Put(data11);
 
+            var dataGet1 = queue.GetData();
+            var dataGet2 = queue.GetData();
+
+            queue.Put(data12);
+            queue.Put(data13);
+            queue.Put(data14);
+            queue.Put(data15);
+            queue.Put(data16);
+            queue.Put(data17);
+            queue.Put(data18);
             foreach (object item in queue)
             {
                 Console.WriteLine("{0}", item);
             }
+            
+
 
             Console.ReadLine();
         }

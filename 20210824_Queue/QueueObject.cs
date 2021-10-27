@@ -20,18 +20,42 @@ namespace _20210824_Queue
             _data = new object[sizeQueue];
         }
 
-        public void Put(object data)            // Figura
+        public void Put(object data)           
         {
             if(_countObject == _size)
             {
+                object[] newArray = new object[_data.Length + INCREMENT];
+
+                Array.Copy(_data, _firstData, newArray, 0, _data.Length - _firstData);
+                Array.Copy(_data, 0, newArray, _data.Length - _firstData, _firstData);
+
+                _data = newArray;
                 _size += INCREMENT;
-                Array.Resize(ref _data, _size);
-                
-                for (int i = _firstData; i + INCREMENT < _data.Length; i++)
+                _firstData = 0;
+                _endData = _data.Length - INCREMENT - 1;
+                //_size += INCREMENT;
+                //Array.Resize(ref _data, _size);
+
+                //for (int i = 0; i < _countObject; i++)
+                //{
+                //    if (_firstData + i + INCREMENT < _data.Length)
+                //    {
+                //        _data[_firstData + i + INCREMENT] = _data[_firstData + i];
+                //        _data[_firstData + i] = null;
+                //    }
+                //    else
+                //    {
+                //        i = 0;
+                //    }
+                //}
+                //_firstData += INCREMENT;
+                //_endData += INCREMENT;
+                /*for (int i = _firstData; i + INCREMENT < _data.Length; i++)
                 {
-                    _data[i + INCREMENT] = _data[i];  
+                    _data[i + INCREMENT] = _data[i];
+                    _data[i] = null;
                 }
-                _firstData += INCREMENT;
+                _firstData += INCREMENT;*/
             }
 
             if(_endData == _size - 1)
@@ -48,11 +72,11 @@ namespace _20210824_Queue
         {
             if(_countObject == 0)
             {
-                return -1;
+                throw new Exception(); //TODO: создать собственное исключение
             }
 
             object data = _data[_firstData];
-
+            _data[_firstData] = null;
             _firstData++;
             _countObject--;
 

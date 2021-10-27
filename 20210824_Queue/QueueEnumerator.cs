@@ -11,11 +11,11 @@ namespace _20210824_Queue
         private object[] _data;
         private int _first;
         private int _end;
-
+        private bool firstElement = true;
         public QueueEnumerator(object[] data, int first, int end)
         {
             _data = data;
-            _first = first - 1;
+            _first = first;
             _end = end;
         }
 
@@ -25,6 +25,7 @@ namespace _20210824_Queue
             {
                 //if (position == -1 || position >= _points.Length)
                 //    throw new InvalidOperationException();
+
                 return _data[_first];
             }
         }
@@ -32,16 +33,23 @@ namespace _20210824_Queue
         public bool MoveNext()
         {
             bool result = false;
-
+            
             if (_first != _end)
             {
                 _first++;
-                if(_first > _data.Length - 1)
+                if (_first > _data.Length - 1)
                 {
                     _first = 0;
                 }
-                result = true;                
+                result = true;
             }
+            if(firstElement)
+            {
+                result = true;
+                firstElement = false;
+                _first--;
+            }
+                       
 
             return result;
         }
